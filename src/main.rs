@@ -4,7 +4,7 @@ use serde_json::{json, Value};
 use std::fs::File;
 
 
-mod add;
+///mod add;
 
 /// project strtucture from https://github.com/awslabs/aws-lambda-rust-runtime/blob/main/examples/basic-error-handling/src/main.rs
 /// check dynamo impl
@@ -49,9 +49,9 @@ impl std::fmt::Display for CustomError {
 }
 
 
-use self::{
-    routes::add
-};
+//use self::{
+//    routes::add
+//};
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
