@@ -1,0 +1,41 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+    - name: Install Zig toolchain
+      uses: korandoru/setup-zig@v1
+      with:
+          zig-version: 0.10.0
+    - name: Install Cargo Lambda
+      uses: jaxxstorm/action-install-gh-release@v1.9.0
+      with:
+          repo: cargo-lambda/cargo-lambda
+          platform: linux # Other valid options: 'windows' or 'darwin'
+          arch: x86_64
+    - uses: actions/checkout@v3
+    - name: Build
+      run: cargo build --verbose
+    - name: Test directory
+      run: pwd
+    - uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+
+    
