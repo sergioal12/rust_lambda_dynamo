@@ -38,7 +38,9 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-2
-    - run: cd target/lambda/rust_lambda_dynamo
+    - run: cd target
+    - run: cd lambda
+    - run: cd rust_lambda_dynamo
     - run: ls
     - run: aws lambda update-function-code --function-name=rust_test --zip-file=fileb://bootstrap.zip #cargo lambda packages rust compiled version to bootstrap.zip
 
