@@ -32,6 +32,7 @@ jobs:
       run: cargo build --verbose
     - name: Test directory
       run: pwd
+    - run: ls
     - uses: aws-actions/configure-aws-credentials@v2
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
