@@ -33,7 +33,7 @@ jobs:
     - name: Test directory
       run: pwd
     - run: ls
-    - run: cd /home/runner/work/rust_lambda_dynamo/rust_lambda_dynamo/target/lambda/rust_lambda_dynamo
+    - run: cd target
     - run: ls
     - uses: aws-actions/configure-aws-credentials@v2
       with:
