@@ -68,7 +68,8 @@ async fn main() -> Result<(), Error> {
 
 pub(crate) async fn handler(event: LambdaEvent<Value>) -> Result<Value, Error> {
     let (event, ctx) = event.into_parts();
-    println!("{:?}", ctx);
+    println!(" esto es ctx: {:?}", ctx);
+    println!("esto es event {:?}", event);
 
     match  serde_json::from_value::<Request>(event)?.event_type {
         EventType::SimpleError =>{
